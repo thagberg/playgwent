@@ -4,7 +4,10 @@ exports.effects = {
     weatherClear: 0,
     weatherSnow: 1,
     weatherFog: 2,
-    weatherRain: 3
+    weatherRain: 3,
+    decoy: 4,
+    brother: 5,
+    medic: 6
 };
 
 exports.factions = {
