@@ -1,0 +1,10 @@
+{
+  "name": "gwent",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Multiplayer Gwent Card Game",
+  "dependencies": {
+    "restify": "3.0.3",
+    "lokijs": "1.2.5"
+  }
+}
