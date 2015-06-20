@@ -40,6 +40,14 @@
         return thisPlayer.cards;
     };
 
+    function getPlayerCardsFull(playerId) {
+        var playerCards = getPlayerCards(playerId);
+        var fullCards = cards.where(function(obj) {
+            return playerCards.indexOf(obj.id) !== -1;
+        });
+        return fullCards;
+    };
+
     function getDeck(gameId, playerId) {
         var thisGame = games.get(gameId);
         //var thisPlayer = thisGame.players[playerId];
@@ -172,11 +180,6 @@
         return thisPlayer;
     };
 
-    function getPlayerCards(playerId) {
-        var thisPlayer = getPlayer(playerId);
-        return thisPlayer.cards;
-    };
-
     function addToPlayerCards(playerId, card) {
         var thisPlayer = players.get(playerId);
     };
@@ -240,8 +243,47 @@
 
     // server routes
 
+    server.get(/\/lib\/.*/, restify.serveStatic({
+      directory: __dirname + '/..',
+      default: 'require.js'
+    }));
+
+    // server.get(/\/lib\/?.*/, function(req, res, next) {
+    //     console.log("looking for static");
+    // });
+
+    server.get('cards/:playerId', function(req, res, next) {
+        var playerId = req.params.playerId;
+        console.log(playerId);
+        var cards = getPlayerCardsFull(playerId); 
+        res.send({cards: cards});
+        return next();
+    });
+
     server.get('hello', function(req, res, next) {
         res.send("hello");
+        return next();
+    });
+
+    server.get('start', function(req, res, next) {
+        var newGameId = startGame();
+        res.send({gameId: newGameId});
+        return next();
+    });
+
+    server.get('createPlayer/:name', function(req, res, next) {
+        var name = req.params.name;
+        var newPlayerId = createPlayer(name);
+        res.send({playerId: newPlayerId});
+        return next();
+    });
+
+    server.get('join/:gameId/:playerId', function(req, res, next) {
+        var gameId = req.params.gameId;
+        var playerId = req.params.playerId;
+        console.log("Joining game: ", gameId, playerId);
+        connectToGame(gameId, playerId);
+        res.send({joined: gameId});
         return next();
     });
 
@@ -284,6 +326,7 @@
     });
 
     server.listen(8080, function() {
+        console.log(process.cwd());
         console.log("%s listening at %s", server.name, server.url);
     });
 
