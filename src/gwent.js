@@ -4,6 +4,7 @@
     var bunyan = require('bunyan');
     var card = require('./card');
     var globals = require('./global');
+    var game = require('.game.js');
 
     var log = bunyan.createLogger({
         name: "PlayGwent",
@@ -108,6 +109,12 @@
         return retCards;
     };
 
+    function playcard(gameId, playerId, cardId) {
+        var thisGame = games.get(gameId);
+        var thisDeck = thisGame.decks[playerId];
+        var thisHand = thisGame.hands[playerId];
+    };
+
     function playCard(gameId, playerId, cardIndex, row) {
         var thisGame = games.get(gameId);
         var thisHand = thisGame.hands[playerId];
@@ -184,8 +191,24 @@
         var thisPlayer = players.get(playerId);
     };
 
-    function startGame() {
-        var newGame = games.insert({players: {}, decks: {}});
+    function startGame(useJokers) {
+        if (userJokers === undefined) {
+            useJokers = false;
+        }
+
+        var newGame = new game.Game();
+
+        var cardsForDeck = cards.where(function(obj) {
+            return (obj.value !== cards.value.joker || useJokers);
+        });
+        var deck = {
+            id: 'mainDeck',
+            cards: cardsForDeck
+        };
+        newGame.setDecks([deck]);
+
+        //var newGame = games.insert({players: newGame.players, decks: newGame.decks, table: newGame.table});
+        var newGame = games.insert({game: newGame});
         return newGame['$loki'];
     };
 
@@ -313,6 +336,10 @@
         //res.send({gameId: req.params.gameId, playerId: req.params.playerId});
         res.send({cards: cards});
         return next();
+    });
+
+    server.get('play/:gameId/:playerId/:cardId', function(req, res, next) {
+        console.log("Playing card: ", req.params.gameId, req.params.playerId, req.params.cardId);
     });
 
     server.get(/./, restify.serveStatic({

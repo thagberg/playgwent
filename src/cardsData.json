@@ -1,0 +1,105 @@
+{
+    "northernRealms": [
+        {
+            "id": "blueStripesCommando",
+            "faction": "northern",
+            "title": "Blue Stripes Commando",
+            "text": "I'd do anything for Temeria. Mostly, though, I kill for her.",
+            "type": "close",
+            "hero": false,
+            "spy": false,
+            "value": 4,
+            "effect": null
+        }, {
+            "id": "catapultNor",
+            "faction": "northern",
+            "title": "Catapult",
+            "text": "The Gods help those who have better catapults.",
+            "type": "siege",
+            "hero": false,
+            "spy": false,
+            "value": 8,
+            "effect": null
+        }, {
+            "id": "cinfrid",
+            "faction": "northern",
+            "title": "Cinfrid Reavers Dragon Hunter",
+            "type": "range",
+            "text": "Haven't had much luck with monsters of late, so we enlisted.",
+            "hero": false,
+            "spy": false,
+            "value": 5,
+            "effect": "friend"
+        }, {
+            "id": "esterad",
+            "faction": "northern",
+            "title": "Esterad Thyssen",
+            "text": "Like all Thyssen men, he was tall, powerfully built and criminally handsome",
+            "type": "close",
+            "hero": true,
+            "spy": false,
+            "value": 10,
+            "effect": null
+        }, {
+            "id": "foltest1",
+            "faction": "northern",
+            "title": "Foltest Lord Commander of the North",
+            "text": "Sod advisors and their schemes. I place my trust in  my soldiers' blades.",
+            "type": "leader",
+            "hero": false,
+            "spy": false,
+            "value": 0,
+            "effect": null
+        }, {
+            "id": "foltest2",
+            "faction": "northern",
+            "title": "Foltest the Siegemaster",
+            "text": "A well-aimed ballista razes not just the enemy's walls, but his morale as well.",
+            "type": "leader",
+            "hero": false,
+            "spy": false,
+            "value": 0,
+            "effect": null
+        }, {
+            "id": "foltest3",
+            "faction": "northern",
+            "title": "Foltest the Steel-Forged",
+            "text": "A beautiful day for battle.",
+            "type": "leader",
+            "hero": false,
+            "spy": false,
+            "value": 0,
+            "effect": null
+        }, {
+            "id": "natalis",
+            "faction": "northern",
+            "title": "John Natalis",
+            "text": "That square should bear the names of my soldiers, of the dead. Not mine.",
+            "type": "close",
+            "hero": true,
+            "spy": false,
+            "value": 10,
+            "effect": null
+        }, {
+            "id": "eilhart",
+            "faction": "northern",
+            "title": "Phillippa Eilhart",
+            "text": "Soon the power of kings will wither, and the Lodge shall seize its rightful place.",
+            "type": "range",
+            "hero": true,
+            "spy": false,
+            "value": 10,
+            "effect": null
+        }, {
+            "id": "pfi",
+            "faction": "northern",
+            "title": "Poor Fucking Infantry",
+            "text": "I's a war veteran! ... spare me a crown?",
+            "type": "close",
+            "hero": false,
+            "spy": false,
+            "value": 1,
+            "effect": null
+        }
+    ]
+}
